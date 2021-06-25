@@ -1,6 +1,7 @@
-#!/usr/bin/python3
+https://github.com/ManuBedoya/AirBnB_clone#!/usr/bin/python3
 """Module to storage a file
 """
+from pdir import pdir
 import json
 from os.path import exists
 
@@ -27,15 +28,15 @@ class FileStorage:
         save_o = {}
         for key, value in self.__objects.items():
             save_o[key] = value.to_dict()
+
         with open(self.__file_path, 'w+', encoding='utf-8') as file_json:
-            file_json.write(json.dumps(save_o))
+            json.dump(save_o, file_json)
 
     def reload(self):
         """Deserialization
         """
         try:
-            if exists(self.__file_path):
-                with open(self.__file_path, 'r', encoding='utf-8') as file_json:
-                    self.__objects = json.load(file_json.read())
+            with open(self.__file_path, 'r', encoding='utf-8') as file_json:
+                self.__objects = json.load(file_json)
         except:
             pass
