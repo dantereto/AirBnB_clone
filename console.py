@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Module to storage a file
 """
+
+from models.user import User
 import cmd, sys
 from shlex import split
 from models.base_model import BaseModel
@@ -18,18 +20,19 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         'create a json file'
         arg = split(arg)
-        if arg[0] == None:
+        if arg == []:
             print ('** class name missing **')
         elif arg[0] != 'BaseModel':
             print("** class doesn't exist **")
         else:
+            storage.reload()
             my_model = BaseModel() 
             storage.new(my_model)
             my_model.save()
             print(my_model.id)
     def do_show(self, arg):
         arg = split(arg)
-        if arg[0] == None:
+        if arg == []:
             print ('** class name missing **')
         elif arg[0] != 'BaseModel':
             print("** class doesn't exist **")
@@ -43,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
             print('** no instance found **')
     def do_destroy(self, arg):
         arg = split(arg)
-        if arg[0] == None:
+        if arg == []:
             print ('** class name missing **')
         elif arg[0] != 'BaseModel':
             print("** class doesn't exist **")
@@ -59,14 +62,32 @@ class HBNBCommand(cmd.Cmd):
         arg = split(arg)
         if arg[0] != 'BaseModel':
             print("** class doesn't exist **")
-        elif len(arg) == 0:
+        elif arg == []:
+            lista = []
             for  key, value in storage.all().items():
-                print(value)
+                lista.append(value.__str__()) 
+            print(lista)
         else:
             lista = []
             for  key, value in storage.all().items():
                 if arg[0] == value.__class__.__name__:
-                    lista.append(value)
+                    lista.append(value.__str__())
             print(lista)
+
+    def do_update(self, arg):
+        arg = split(arg)
+        if arg == []:
+            print ('** class name missing **')
+        elif arg[0] != 'BaseModel':
+            print("** class doesn't exist **")
+        elif len(arg) == 1:
+            print ('** instance id missing **')
+        elif len(arg) == 2:
+            print ('** attribute name missing **')
+        elif len(arg) == 3:
+            print ('** value missing **')
+        else:
+            for  key, value in storage.all().items():
+                setattr(value, arg[2], arg[3]) 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
