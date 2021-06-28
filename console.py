@@ -14,8 +14,10 @@ from models.place import Place
 from models.review import Review
 
 
-objects = {'BaseModel': BaseModel, 'User': User, 'City': City, 'State': State,
-           'Amenity': Amenity, 'Place': Place, 'Review': Review}
+
+objects = {'User': User, 'BaseModel': BaseModel, 'Place': Place,
+           'State': State, 'City': City, 'Amenity': Amenity,
+           'Review': Review}
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
@@ -36,20 +38,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             storage.reload()
-            if arg[0] == 'BaseModel':
-                my_model = BaseModel()
-            elif arg[0] == 'City':
-                my_model = City()
-            elif arg[0] == 'Amenity':
-                my_model = Amenity()
-            elif arg[0] == 'Place':
-                my_model = Place()
-            elif arg[0] == 'Review':
-                my_model = Review()
-            elif arg[0] == 'State':
-                my_model = State()
-            else:
-                my_model = User()
+            my_model = objects[arg[0]]()
+
             storage.new(my_model)
             my_model.save()
             print(my_model.id)

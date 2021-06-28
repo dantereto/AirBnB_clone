@@ -9,6 +9,8 @@ from models.state import State
 from models.place import Place
 from models.review import Review
 
+objects = {'User': User, 'Place': Place, 'State': State,
+           'City': City, 'Amenity': Amenity, 'Review': Review}
 
 class FileStorage:
     """ File Storage class
@@ -39,6 +41,7 @@ class FileStorage:
 
     def reload(self):
         from models.base_model import BaseModel
+        objects['BaseModel'] = BaseModel
         try:
             with open(self.__file_path) as file_json:
                 data = json.load(file_json)
@@ -46,19 +49,7 @@ class FileStorage:
             if not data:
                 return
             for key in data.keys():
-                if data[key]['__class__'] == 'User':
-                    FileStorage.__objects[key] = User(**data[key])
-                if data[key]['__class__'] == 'BaseModel':
-                    FileStorage.__objects[key] = BaseModel(**data[key])
-                if data[key]['__class__'] == 'Place':
-                    FileStorage.__objects[key] = User(**data[key])
-                if data[key]['__class__'] == 'State':
-                    FileStorage.__objects[key] = State(**data[key])
-                if data[key]['__class__'] == 'City':
-                    FileStorage.__objects[key] = City(**data[key])
-                if data[key]['__class__'] == 'Amenity':
-                    FileStorage.__objects[key] = Amenity(**data[key])
-                if data[key]['__class__'] == 'Review':
-                    FileStorage.__objects[key] = Review(**data[key])
+                if data[key]['__class__'] in objects.keys():
+                    FileStorage.__objects[key] = objects[data[key]['__class__']](**data[key])
         except:
             pass
