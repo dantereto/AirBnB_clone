@@ -41,5 +41,7 @@ class FileStorage:
             for key in data.keys():
                 if data[key]['__class__'] == 'User':
                     FileStorage.__objects[key] = User(**data[key])
+                if data[key]['__class__'] == 'BaseModel':
+                    FileStorage.__objects[key] = BaseModel(**data[key])
         except:
             pass

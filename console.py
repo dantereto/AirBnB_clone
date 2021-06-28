@@ -26,7 +26,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             storage.reload()
-            my_model = User() 
+            my_model = User()
             storage.new(my_model)
             my_model.save()
             print(my_model.id)
@@ -65,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
         elif arg == []:
             lista = []
             for  key, value in storage.all().items():
-                lista.append(value.__str__()) 
+                lista.append(value.__str__())
             print(lista)
         else:
             lista = []
@@ -88,6 +88,6 @@ class HBNBCommand(cmd.Cmd):
             print ('** value missing **')
         else:
             for  key, value in storage.all().items():
-                setattr(value, arg[2], arg[3]) 
+                setattr(value, arg[2], arg[3])
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
