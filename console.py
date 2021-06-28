@@ -7,6 +7,10 @@ import cmd, sys
 from shlex import split
 from models.base_model import BaseModel
 from models import storage
+
+
+objects = {'BaseModel': BaseModel, 'User': User}
+
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     def do_quit(self, arg):
@@ -22,11 +26,14 @@ class HBNBCommand(cmd.Cmd):
         arg = split(arg)
         if arg == []:
             print ('** class name missing **')
-        elif arg[0] != 'BaseModel':
+        elif arg[0] not in objects.keys():
             print("** class doesn't exist **")
         else:
             storage.reload()
-            my_model = User()
+            if arg[0] == 'BaseModel':
+                my_model = BaseModel()
+            else:
+                my_model = User()
             storage.new(my_model)
             my_model.save()
             print(my_model.id)
@@ -34,13 +41,13 @@ class HBNBCommand(cmd.Cmd):
         arg = split(arg)
         if arg == []:
             print ('** class name missing **')
-        elif arg[0] != 'User':
+        elif arg[0] not in objects.keys():
             print("** class doesn't exist **")
         elif len(arg) == 1:
             print('** instance id missing **')
         else:
             for key, value in storage.all().items():
-                 if value.id == arg[1]:
+                 if value.id == arg[1] and value.__class__.__name__ == arg[0]:
                     print(str(value))
                     return
             print('** no instance found **')
@@ -48,25 +55,25 @@ class HBNBCommand(cmd.Cmd):
         arg = split(arg)
         if arg == []:
             print ('** class name missing **')
-        elif arg[0] != 'User':
+        elif arg[0] not in objects.keys():
             print("** class doesn't exist **")
         elif len(arg) == 1:
             print('** instance id missing **')
         else:
             for key, value in storage.all().items():
-                if value.id == arg[1]:
+                if value.id == arg[1] and value.__class__.__name__ == arg[0]:
                     storage.all().pop(key)
                     return
             print('** no instance found **')
     def do_all(self, arg):
         arg = split(arg)
-        if arg[0] != 'User':
-            print("** class doesn't exist **")
-        elif arg == []:
+        if arg == []:
             lista = []
             for  key, value in storage.all().items():
                 lista.append(value.__str__())
             print(lista)
+        elif arg[0] not in objects.keys():
+            print("** class doesn't exist **")
         else:
             lista = []
             for  key, value in storage.all().items():
@@ -78,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
         arg = split(arg)
         if arg == []:
             print ('** class name missing **')
-        elif arg[0] != 'User':
+        elif arg[0] not in objects.keys():
             print("** class doesn't exist **")
         elif len(arg) == 1:
             print ('** instance id missing **')
