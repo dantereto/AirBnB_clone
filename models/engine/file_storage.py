@@ -3,6 +3,13 @@
 """
 import json
 from models.user import User
+from models.city import City
+from models.amenity import Amenity
+from models.state import State
+from models.place import Place
+from models.review import Review
+
+
 class FileStorage:
     """ File Storage class
     """
@@ -43,5 +50,15 @@ class FileStorage:
                     FileStorage.__objects[key] = User(**data[key])
                 if data[key]['__class__'] == 'BaseModel':
                     FileStorage.__objects[key] = BaseModel(**data[key])
+                if data[key]['__class__'] == 'Place':
+                    FileStorage.__objects[key] = User(**data[key])
+                if data[key]['__class__'] == 'State':
+                    FileStorage.__objects[key] = State(**data[key])
+                if data[key]['__class__'] == 'City':
+                    FileStorage.__objects[key] = City(**data[key])
+                if data[key]['__class__'] == 'Amenity':
+                    FileStorage.__objects[key] = Amenity(**data[key])
+                if data[key]['__class__'] == 'Review':
+                    FileStorage.__objects[key] = Review(**data[key])
         except:
             pass

@@ -7,9 +7,15 @@ import cmd, sys
 from shlex import split
 from models.base_model import BaseModel
 from models import storage
+from models.city import City
+from models.amenity import Amenity
+from models.state import State
+from models.place import Place
+from models.review import Review
 
 
-objects = {'BaseModel': BaseModel, 'User': User}
+objects = {'BaseModel': BaseModel, 'User': User, 'City': City, 'State': State,
+           'Amenity': Amenity, 'Place': Place, 'Review': Review}
 
 class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
@@ -32,6 +38,16 @@ class HBNBCommand(cmd.Cmd):
             storage.reload()
             if arg[0] == 'BaseModel':
                 my_model = BaseModel()
+            elif arg[0] == 'City':
+                my_model = City()
+            elif arg[0] == 'Amenity':
+                my_model = Amenity()
+            elif arg[0] == 'Place':
+                my_model = Place()
+            elif arg[0] == 'Review':
+                my_model = Review()
+            elif arg[0] == 'State':
+                my_model = State()
             else:
                 my_model = User()
             storage.new(my_model)
