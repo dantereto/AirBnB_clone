@@ -40,11 +40,7 @@ class BaseModel:
         Returns:
         dict (dict)
         """
-        dict_copy = {}
-        for key, value in self.__dict__.items():
-            if key in ['created_at', 'updated_at']:
-                dict_copy[key] = value
-        dict_copy['__class__'] = self.__class__.__name__
-        dict_copy['created_at'] = self.created_at.isoformat()
-        dict_copy['updated_at'] = self.updated_at.isoformat()
-        return dict_copy
+        self.__dict__['__class__'] = self.__class__.__name__
+        self.__dict__['created_at'] = self.created_at.isoformat()
+        self.__dict__['updated_at'] = self.updated_at.isoformat()
+        return self.__dict__
