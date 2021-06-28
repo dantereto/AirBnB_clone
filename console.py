@@ -26,7 +26,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             storage.reload()
-            my_model = BaseModel() 
+            my_model = User() 
             storage.new(my_model)
             my_model.save()
             print(my_model.id)
@@ -34,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
         arg = split(arg)
         if arg == []:
             print ('** class name missing **')
-        elif arg[0] != 'BaseModel':
+        elif arg[0] != 'User':
             print("** class doesn't exist **")
         elif len(arg) == 1:
             print('** instance id missing **')
@@ -48,7 +48,7 @@ class HBNBCommand(cmd.Cmd):
         arg = split(arg)
         if arg == []:
             print ('** class name missing **')
-        elif arg[0] != 'BaseModel':
+        elif arg[0] != 'User':
             print("** class doesn't exist **")
         elif len(arg) == 1:
             print('** instance id missing **')
@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
             print('** no instance found **')
     def do_all(self, arg):
         arg = split(arg)
-        if arg[0] != 'BaseModel':
+        if arg[0] != 'User':
             print("** class doesn't exist **")
         elif arg == []:
             lista = []
@@ -78,7 +78,7 @@ class HBNBCommand(cmd.Cmd):
         arg = split(arg)
         if arg == []:
             print ('** class name missing **')
-        elif arg[0] != 'BaseModel':
+        elif arg[0] != 'User':
             print("** class doesn't exist **")
         elif len(arg) == 1:
             print ('** instance id missing **')

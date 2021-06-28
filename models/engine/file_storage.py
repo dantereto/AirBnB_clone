@@ -2,8 +2,7 @@
 """Module to storage a file
 """
 import json
-
-
+from models.user import User
 class FileStorage:
     """ File Storage class
     """
@@ -40,7 +39,7 @@ class FileStorage:
             if not data:
                 return
             for key in data.keys():
-                if data[key]['__class__'] == 'BaseModel':
-                    FileStorage.__objects[key] = BaseModel(**data[key])
+                if data[key]['__class__'] == 'User':
+                    FileStorage.__objects[key] = User(**data[key])
         except:
             pass
