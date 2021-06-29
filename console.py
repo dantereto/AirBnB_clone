@@ -89,16 +89,16 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """destroy the file"""
 
-        for key, value in storage.all().items():
-            if value.id == arg[1] and value.__class__.__name__ == arg[0]:
-                arg = split(arg)
-                if arg == []:
-                    print('** class name missing **')
-                elif arg[0] not in objects.keys():
-                    print("** class doesn't exist **")
-                elif len(arg) == 1:
-                    print('** instance id missing **')
-                else:
+        arg = split(arg)
+        if arg == []:
+            print('** class name missing **')
+        elif arg[0] not in objects.keys():
+            print("** class doesn't exist **")
+        elif len(arg) == 1:
+            print('** instance id missing **')
+        else:
+            for key, value in storage.all().items():
+                if value.id == arg[1] and value.__class__.__name__ == arg[0]:
                     storage.all().pop(key)
                     return
             print('** no instance found **')
@@ -137,7 +137,12 @@ class HBNBCommand(cmd.Cmd):
             print('** value missing **')
         else:
             for key, value in storage.all().items():
-                setattr(value, arg[2], arg[3])
+                if value.id == arg[1] and value.__class__.__name__ == arg[0]:
+                    setattr(storage.all()[key], arg[2], arg[3])
+                    storage.save()
+                    return
+            print('** no instance found **')
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
