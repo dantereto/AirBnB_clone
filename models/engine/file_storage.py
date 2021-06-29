@@ -59,5 +59,5 @@ class FileStorage:
                 if data[key]['__class__'] in objects.keys():
                     FileStorage.__objects[key] = objects[data[
                         key]['__class__']](**data[key])
-        except Exeption:
+        except Exception:
             pass
