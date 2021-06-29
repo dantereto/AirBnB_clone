@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Module to storage a file
 """
+
 from models.user import User
 import cmd
 import sys
@@ -25,11 +26,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
-        exit()
+        return True
 
     def do_EOF(self, arg):
         """EOF command to exit the program"""
-        exit()
+        return True
 
     def emptyline(self):
         """pass when found a empty line"""
