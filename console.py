@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Module to storage a file
-"""
+"""Module to storage a file"""
+
 from models.user import User
 import cmd
 import sys
@@ -12,6 +12,8 @@ from models.amenity import Amenity
 from models.state import State
 from models.place import Place
 from models.review import Review
+
+
 objects = {'User': User, 'BaseModel': BaseModel, 'Place': Place,
            'State': State, 'City': City, 'Amenity': Amenity,
            'Review': Review}
@@ -25,13 +27,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, arg):
         """quit the program"""
-        'Quit command to exit the program'
-        exit()
+        return True
 
     def do_EOF(self, arg):
         """Quit the program"""
-        'EOF command to exit the program'
-        exit()
+        print('')
+        return True
 
     def emptyline(self):
         """pass when found a empty line"""
@@ -39,7 +40,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """create a file"""
-        'create a json file'
         arg = split(arg)
         if arg == []:
             print('** class name missing **')
