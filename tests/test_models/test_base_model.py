@@ -16,5 +16,7 @@ class TestBaseModel(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/base_model.py'])
         self.assertEqual(result.total_errors, 0, "Check pep8")
+
+
 if __name__ == '__main__':
     unittest.main()
