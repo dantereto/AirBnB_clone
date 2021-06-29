@@ -145,17 +145,10 @@ class HBNBCommand(cmd.Cmd):
                     elif len(arg) == 3:
                         print('** value missing **')
                         return
-                    if arg[3][0] and arg[3][-1] != '"':
-                       try:
-                           arg[3] = int(arg[3])
-                       except ValueError:
-                           try:
-                               arg[3] = flloat(arg[3])
-                           except ValueError:
-                               pass
-                    setattr(storage.all()[key], arg[2], arg[3])
-                    storage.save()
-                    return
+                    else: 
+                        setattr(storage.all()[key], arg[2], arg[3])
+                        storage.save()
+                        return
             print('** no instance found **')
 
 
