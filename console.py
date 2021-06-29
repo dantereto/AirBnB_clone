@@ -13,11 +13,6 @@ from models.review import Review
 from models.state import State
 
 
-objects = {'User': User, 'BaseModel': BaseModel, 'Place': Place,
-           'State': State, 'City': City, 'Amenity': Amenity,
-           'Review': Review}
-
-
 class HBNBCommand(cmd.Cmd):
     """funcion principal prueba"""
     prompt = '(hbnb) '
