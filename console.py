@@ -2,17 +2,18 @@
 """Module to storage a file
 """
 
-from models.user import User
+
 from shlex import split
 from models.base_model import BaseModel
-from models import storage
+from models.user import User
 from models.city import City
 from models.amenity import Amenity
-from models.state import State
 from models.place import Place
 from models.review import Review
-import sys
+from models.state import State
+from models import storage
 import cmd
+import sys
 
 
 objects = {'User': User, 'BaseModel': BaseModel, 'Place': Place,
