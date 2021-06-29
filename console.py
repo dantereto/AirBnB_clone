@@ -3,7 +3,8 @@
 """
 
 
-from shlex import split
+import cmd
+import shlex
 from models.base_model import BaseModel
 from models.user import User
 from models.city import City
@@ -12,8 +13,6 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models import storage
-import cmd
-import sys
 
 
 objects = {'User': User, 'BaseModel': BaseModel, 'Place': Place,
@@ -39,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """create a json file"""
-        arg = split(arg)
+        arg = shlex.split(arg)
         if arg == []:
             print('** class name missing **')
         elif arg[0] not in objects.keys():
@@ -53,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """show the file"""
-        arg = split(arg)
+        arg = shlex.split(arg)
         if arg == []:
             print('** class name missing **')
         elif arg[0] not in objects.keys():
@@ -69,7 +68,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """destroy the file"""
-        arg = split(arg)
+        arg = shlex.split(arg)
         if arg == []:
             print('** class name missing **')
         elif arg[0] not in objects.keys():
@@ -85,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """show all the files"""
-        arg = split(arg)
+        arg = shlex.split(arg)
         if arg == []:
             lista = []
             for key, value in storage.all().items():
@@ -102,7 +101,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """update a new element to the file"""
-        arg = split(arg)
+        arg = shlex.split(arg)
         if arg == []:
             print('** class name missing **')
         elif arg[0] not in objects.keys():
