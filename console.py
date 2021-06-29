@@ -80,6 +80,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(arg) == 1:
             print('** instance id missing **')
         else:
+            storage.reload()
             for key, value in storage.all().items():
                 if value.id == arg[1] and value.__class__.__name__ == arg[0]:
                     print(str(value))
@@ -97,6 +98,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(arg) == 1:
             print('** instance id missing **')
         else:
+            storage.reload()
             for key, value in storage.all().items():
                 if value.id == arg[1] and value.__class__.__name__ == arg[0]:
                     storage.all().pop(key)
@@ -108,6 +110,7 @@ class HBNBCommand(cmd.Cmd):
 
         arg = split(arg)
         if arg == []:
+            storage.reload()
             lista = []
             for key, value in storage.all().items():
                 lista.append(value.__str__())
@@ -115,6 +118,7 @@ class HBNBCommand(cmd.Cmd):
         elif arg[0] not in objects.keys():
             print("** class doesn't exist **")
         else:
+            storage.reload()
             lista = []
             for key, value in storage.all().items():
                 if arg[0] == value.__class__.__name__:
@@ -132,6 +136,7 @@ class HBNBCommand(cmd.Cmd):
         elif len(arg) == 1:
             print('** instance id missing **')
         else:
+            storage.reload()
             for key, value in storage.all().items():
                 if value.id == arg[1] and value.__class__.__name__ == arg[0]:
                     if len(arg) == 2:
