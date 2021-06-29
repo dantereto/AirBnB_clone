@@ -137,8 +137,10 @@ class HBNBCommand(cmd.Cmd):
             print('** value missing **')
         else:
             for key, value in storage.all().items():
-                setattr(storage.all()[key], arg[2], arg[3])
-            return
+                if value.id == arg[1] and value.__class__.__name__ == arg[0]:
+                    setattr(storage.all()[key], arg[2], arg[3])
+                    storage.save()
+                    return
             print('** no instance found **')
 
 
