@@ -12,6 +12,7 @@ from models.review import Review
 objects = {'User': User, 'Place': Place, 'State': State,
            'City': City, 'Amenity': Amenity, 'Review': Review}
 
+
 class FileStorage:
     """ File Storage class
     """
@@ -50,6 +51,7 @@ class FileStorage:
                 return
             for key in data.keys():
                 if data[key]['__class__'] in objects.keys():
-                    FileStorage.__objects[key] = objects[data[key]['__class__']](**data[key])
-        except:
+                    FileStorage.__objects[key] = objects[data[
+                        key]['__class__']](**data[key])
+        except Exeption:
             pass
