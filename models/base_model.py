@@ -2,6 +2,7 @@
 
 """Module base model
 """
+
 import models
 import uuid
 from datetime import datetime
@@ -14,6 +15,7 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
 
         """ start variable """
+
         if kwargs:
             for key, value in kwargs.items():
                 if key in ('created_at', 'updated_at'):
@@ -40,11 +42,8 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """ Return a dict
+        """ Return a dict """
 
-        Returns:
-        dict (dict)
-        """
         dict_copy = self.__dict__.copy()
         dict_copy['__class__'] = self.__class__.__name__
         dict_copy['created_at'] = self.created_at.isoformat()
