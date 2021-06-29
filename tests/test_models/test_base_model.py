@@ -17,6 +17,20 @@ class TestBaseModel(unittest.TestCase):
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/base_model.py'])
         self.assertEqual(result.total_errors, 0, "Check pep8")
+    def test_create_base_model(self):
+        my_model = BaseModel()
+        self.assertEqual(type(my_model.id), str)
+        self.assertEqual(my_model.created_at, my_model.updated_at)
+
+    def test_save(self):
+        my_model = BaseModel()
+        my_model.save()
+        self.assertNotEqual(my_model.created_at, my_model.updated_at)
+
+    def test_to_dict(self):
+        my_model = BaseModel()
+        result = my_model.to_dict()
+        self.assertEqual(result['__class__'], 'BaseModel')
 
 
 if __name__ == '__main__':
