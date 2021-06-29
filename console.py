@@ -65,7 +65,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             storage.reload()
             my_model = objects[arg[0]]()
-            storage.new(my_model)
             my_model.save()
             print(my_model.id)
 
