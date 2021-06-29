@@ -9,7 +9,7 @@ from models.state import State
 from models.place import Place
 from models.review import Review
 
-objects = {'User': User, 'Place': Place, 'State': State,
+__objects = {'User': User, 'Place': Place, 'State': State,
            'City': City, 'Amenity': Amenity, 'Review': Review}
 
 
