@@ -22,7 +22,6 @@ objects = {'User': User, 'BaseModel': BaseModel, 'Place': Place,
 class HBNBCommand(cmd.Cmd):
     """ console """
 
-
     prompt = '(hbnb) '
 
     def do_quit(self, arg):
