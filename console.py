@@ -24,6 +24,20 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
+    def default(self, arg):
+        """Function default"""
+        count = 0
+        partition = arg.split('.')
+        if len(partition) == 2:
+            if partition[1] == 'count()':
+                for key, value in storage.all().items():
+                    if value.__class__.__name__ == partition[0]:
+                        count += 1
+                print(count)
+        else:
+            print('*** Unknown syntax: {}'.format(arg))
+
+
     def do_quit(self, arg):
         """quit the program"""
 
@@ -124,7 +138,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             for key, value in storage.all().items():
                 setattr(value, arg[2], arg[3])
-            
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
