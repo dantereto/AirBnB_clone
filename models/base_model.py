@@ -12,6 +12,7 @@ from datetime import datetime
 class BaseModel:
     """ Class Base model
     """
+
     def __init__(self, *args, **kwargs):
 
         """ start variable """
