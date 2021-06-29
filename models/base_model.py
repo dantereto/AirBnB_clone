@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """Module base model
 """
 import models
@@ -7,10 +8,13 @@ from datetime import datetime
 
 
 data = '%Y-%m-%dT%H:%M:%S.%f'
+
+
 class BaseModel:
     """ Class Base model
     """
     def __init__(self, *args, **kwargs):
+
         """ start variable """
         if kwargs:
             for key, value in kwargs.items():
@@ -27,7 +31,9 @@ class BaseModel:
     def __str__(self):
         """Return a string format
         """
-        return '[{}] ({}) {}'.format(self.__class__.__name__, self.id, self.__dict__)
+
+        return '[{}] ({}) {}'.format(
+                self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """Update the current time"""
@@ -37,6 +43,7 @@ class BaseModel:
 
     def to_dict(self):
         """ Return a dict
+
         Returns:
         dict (dict)
         """

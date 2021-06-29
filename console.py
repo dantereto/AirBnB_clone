@@ -26,19 +26,23 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, arg):
         """quit the program"""
+
         return True
 
     def do_EOF(self, arg):
         """Quit the program"""
+
         print('')
         return True
 
     def emptyline(self):
         """pass when found a empty line"""
+
         pass
 
     def do_create(self, arg):
         """create a file"""
+
         arg = split(arg)
         if arg == []:
             print('** class name missing **')
@@ -53,6 +57,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """show the file"""
+
         arg = split(arg)
         if arg == []:
             print('** class name missing **')
@@ -69,6 +74,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """destroy the file"""
+
         arg = split(arg)
         if arg == []:
             print('** class name missing **')
@@ -85,6 +91,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """show all the files"""
+
         arg = split(arg)
         if arg == []:
             lista = []
@@ -102,6 +109,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """update a new element to the file"""
+
         arg = split(arg)
         if arg == []:
             print('** class name missing **')
