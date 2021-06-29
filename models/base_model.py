@@ -45,10 +45,7 @@ class BaseModel:
         Returns:
         dict (dict)
         """
-        dict_copy = {}
-        for key, value in self.__dict__.items():
-            if key not in ['created_at', 'updated_at']:
-                dict_copy[key] = value
+        dict_copy = self.__dict__.copy()
         dict_copy['__class__'] = self.__class__.__name__
         dict_copy['created_at'] = self.created_at.isoformat()
         dict_copy['updated_at'] = self.updated_at.isoformat()
