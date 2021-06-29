@@ -20,16 +20,15 @@ objects = {'User': User, 'BaseModel': BaseModel, 'Place': Place,
 
 
 class HBNBCommand(cmd.Cmd):
+    """funcion principal prueba"""
     prompt = '(hbnb) '
 
     def do_quit(self, arg):
-        """quit the program"""
-        'Quit command to exit the program'
+        """Quit command to exit the program"""
         exit()
 
     def do_EOF(self, arg):
-        """Quit the program"""
-        'EOF command to exit the program'
+        """EOF command to exit the program"""
         exit()
 
     def emptyline(self):
@@ -37,8 +36,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """create a file"""
-        'create a json file'
+        """create a json file"""
         arg = split(arg)
         if arg == []:
             print('** class name missing **')
