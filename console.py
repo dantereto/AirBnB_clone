@@ -3,8 +3,6 @@
 """
 
 from models.user import User
-import cmd
-import sys
 from shlex import split
 from models.base_model import BaseModel
 from models import storage
@@ -13,6 +11,8 @@ from models.amenity import Amenity
 from models.state import State
 from models.place import Place
 from models.review import Review
+import sys
+import cmd
 
 
 objects = {'User': User, 'BaseModel': BaseModel, 'Place': Place,
@@ -24,6 +24,10 @@ class HBNBCommand(cmd.Cmd):
     """funcion principal prueba"""
     prompt = '(hbnb) '
 
+    def emptyline(self):
+        """pass when found a empty line"""
+        pass
+
     def do_quit(self, arg):
         """Quit command to exit the program"""
         return True
@@ -31,10 +35,6 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, arg):
         """EOF command to exit the program"""
         return True
-
-    def emptyline(self):
-        """pass when found a empty line"""
-        pass
 
     def do_create(self, arg):
         """create a json file"""
