@@ -124,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             for key, value in storage.all().items():
                 setattr(value, arg[2], arg[3])
-            models.storage.save()
+            
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
