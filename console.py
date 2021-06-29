@@ -89,16 +89,16 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         """destroy the file"""
 
-        arg = split(arg)
-        if arg == []:
-            print('** class name missing **')
-        elif arg[0] not in objects.keys():
-            print("** class doesn't exist **")
-        elif len(arg) == 1:
-            print('** instance id missing **')
-        else:
-            for key, value in storage.all().items():
-                if value.id == arg[1] and value.__class__.__name__ == arg[0]:
+        for key, value in storage.all().items():
+            if value.id == arg[1] and value.__class__.__name__ == arg[0]:
+                arg = split(arg)
+                if arg == []:
+                    print('** class name missing **')
+                elif arg[0] not in objects.keys():
+                    print("** class doesn't exist **")
+                elif len(arg) == 1:
+                    print('** instance id missing **')
+                else:
                     storage.all().pop(key)
                     return
             print('** no instance found **')
@@ -123,24 +123,26 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """update a new element to the file"""
+        
 
         arg = split(arg)
         if arg == []:
             print('** class name missing **')
         elif arg[0] not in objects.keys():
             print("** class doesn't exist **")
-        elif len(arg) == 1:
-            print('** instance id missing **')
-        elif len(arg) == 2:
-            print('** attribute name missing **')
-        elif len(arg) == 3:
-            print('** value missing **')
         else:
             for key, value in storage.all().items():
                 if value.id == arg[1] and value.__class__.__name__ == arg[0]:
-                    setattr(storage.all()[key], arg[2], arg[3])
-                    storage.save()
-                    return
+                    if len(arg) == 1:
+                        print('** instance id missing **')
+                    elif len(arg) == 2:
+                        print('** attribute name missing **')
+                    elif len(arg) == 3:
+                        print('** value missing **')
+                    else:
+                        setattr(storage.all()[key], arg[2], arg[3])
+                        storage.save()
+                        return
             print('** no instance found **')
 
 
