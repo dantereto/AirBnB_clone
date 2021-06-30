@@ -49,10 +49,7 @@ class FileStorage:
             json.dump(save_o, file_json)
 
     def reload(self):
-        """reload the objects"""
-
         from models.base_model import BaseModel
-        objects['BaseModel'] = BaseModel
         try:
             with open(self.__file_path) as file_json:
                 data = json.load(file_json)
@@ -60,8 +57,7 @@ class FileStorage:
             if not data:
                 return
             for key in data.keys():
-                if data[key]['__class__'] in objects.keys():
-                    FileStorage.__objects[key] = objects[data[
-                        key]['__class__']](**data[key])
-        except Exception:
+                if data[key]['__class__'] == 'BaseModel':
+                    FileStorage.__objects[key] = BaseModel(**data[key])
+        except:
             pass
