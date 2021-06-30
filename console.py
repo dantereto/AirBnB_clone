@@ -28,7 +28,6 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, arg):
         """Function default"""
-
         count = 0
         partition = arg.split('.')
         if len(partition) == 2:
@@ -39,6 +38,9 @@ class HBNBCommand(cmd.Cmd):
                 print(count)
             elif partition[1] == 'all()':
                 self.do_all(partition[0])
+            # elif partition[1][0:4] == 'show' and len(partition[1]) == 44:
+            #     id = partition[1][6:42]
+            #     print(id)
         else:
             print('*** Unknown syntax: {}'.format(arg))
 
@@ -159,5 +161,4 @@ class HBNBCommand(cmd.Cmd):
 if __name__ == '__main__':
     """Start the console
     """
-
     HBNBCommand().cmdloop()
