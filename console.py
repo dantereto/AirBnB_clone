@@ -28,6 +28,7 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, arg):
         """Function default"""
+
         count = 0
         partition = arg.split('.')
         if len(partition) == 2:
