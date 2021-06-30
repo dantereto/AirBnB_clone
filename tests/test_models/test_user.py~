@@ -3,7 +3,6 @@
 """Module to test the user class
 """
 
-
 import unittest
 from models.user import User
 

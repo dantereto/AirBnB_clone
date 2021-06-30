@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """Module to test the city class
 """
 import unittest

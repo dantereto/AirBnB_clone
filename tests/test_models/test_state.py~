@@ -3,7 +3,6 @@
 """Module to test the state class
 """
 
-
 import unittest
 from models.state import State
 

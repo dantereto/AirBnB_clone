@@ -3,7 +3,6 @@
 """Module to test the place class
 """
 
-
 import unittest
 from models.place import Place
 
