@@ -121,15 +121,19 @@ class HBNBCommand(cmd.Cmd):
             for key, value in storage.all().items():
                 lista.append(value.__str__())
             print(lista)
-        elif arg[0] not in objects.keys():
-            print("** class doesn't exist **")
+        # elif arg[0] not in objects.keys():
+        #     print("** class doesn't exist **")
         else:
             storage.reload()
             lista = []
-            for key, value in storage.all().items():
-                if arg[0] == value.__class__.__name__:
-                    lista.append(value.__str__())
-            print(lista)
+            for item in arg:
+                if item not in objects.keys():
+                    print("** class doesn't exist **")
+                else:
+                    for key, value in storage.all().items():
+                        if item == value.__class__.__name__:
+                            lista.append(value.__str__())
+                    print(lista)
 
     def do_update(self, arg):
         """update a new element to the file"""
