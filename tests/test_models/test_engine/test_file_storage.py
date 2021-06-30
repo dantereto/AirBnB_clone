@@ -13,6 +13,7 @@ class TestFileStorage(unittest.TestCase):
     def test_all(self):
         """Test when return objects
         """
+
         my_model = BaseModel()
         storage.new(my_model)
         self.assertEqual(type(storage.all()), dict)

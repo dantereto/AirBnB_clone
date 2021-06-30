@@ -6,7 +6,7 @@ from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """place"""
+    """place class"""
 
     city_id = ''
     user_id = ''

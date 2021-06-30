@@ -9,6 +9,7 @@ from models.state import State
 from models.place import Place
 from models.review import Review
 
+
 objects = {'User': User, 'Place': Place, 'State': State,
            'City': City, 'Amenity': Amenity, 'Review': Review}
 
@@ -34,7 +35,7 @@ class FileStorage:
         self.__objects[key] = obj
 
     def save(self):
-        """Serialization
+        """Serialization the objects
         """
 
         save_o = {}
@@ -45,7 +46,7 @@ class FileStorage:
             json.dump(save_o, file_json)
 
     def reload(self):
-        """reload"""
+        """reload the objects"""
 
         from models.base_model import BaseModel
         objects['BaseModel'] = BaseModel

@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-
 """Module base model
 """
-
 import models
 import uuid
 from datetime import datetime
@@ -13,7 +11,6 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
-
         """ start variable """
 
         if kwargs:

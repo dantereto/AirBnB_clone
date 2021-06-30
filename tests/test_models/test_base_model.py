@@ -11,6 +11,7 @@ from datetime import datetime, date
 class TestBaseModel(unittest.TestCase):
     """TestBaseModel class
     """
+
     def test_cases(self):
         """test the principals cases
         """

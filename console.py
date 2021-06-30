@@ -20,7 +20,7 @@ objects = {'User': User, 'BaseModel': BaseModel, 'Place': Place,
 
 
 class HBNBCommand(cmd.Cmd):
-    """ console """
+    """ console class """
 
     prompt = '(hbnb) '
 
@@ -38,7 +38,6 @@ class HBNBCommand(cmd.Cmd):
                 self.do_all(partition[0])
         else:
             print('*** Unknown syntax: {}'.format(arg))
-
 
     def do_quit(self, arg):
         """quit the program"""
@@ -147,7 +146,7 @@ class HBNBCommand(cmd.Cmd):
                     elif len(arg) == 3:
                         print('** value missing **')
                         return
-                    else: 
+                    else:
                         setattr(storage.all()[key], arg[2], arg[3])
                         storage.save()
                         return
@@ -155,4 +154,6 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
+    """Start the console
+    """
     HBNBCommand().cmdloop()
