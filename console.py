@@ -34,6 +34,8 @@ class HBNBCommand(cmd.Cmd):
                     if value.__class__.__name__ == partition[0]:
                         count += 1
                 print(count)
+            elif partition[1] == 'all()':
+                self.do_all(partition[0])
         else:
             print('*** Unknown syntax: {}'.format(arg))
 
