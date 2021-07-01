@@ -38,9 +38,12 @@ class HBNBCommand(cmd.Cmd):
                 print(count)
             elif partition[1] == 'all()':
                 self.do_all(partition[0])
-            # elif partition[1][0:4] == 'show' and len(partition[1]) == 44:
-            #     id = partition[1][6:42]
-            #     print(id)
+            elif partition[1][0:4] == 'show':
+                id = partition[1].split('(')
+                self.do_show(partition[0] + ' ' + id[1][1:-2])
+            elif partition[1][0:7] == 'destroy':
+                id = partition[1].split('(')
+                self.do_show(partition[0] + ' ' + id[1][1:-2])
         else:
             print('*** Unknown syntax: {}'.format(arg))
 
