@@ -61,6 +61,7 @@ class FileStorage:
                 return
             for key, value in data.items():
                 if value['__class__'] in objects.keys():
-                    FileStorage.__objects[key] = objects[value['__class__']](**data[key])
+                    FileStorage.__objects[
+                        key] = objects[value['__class__']](**data[key])
         except Exception:
             pass
