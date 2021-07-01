@@ -60,7 +60,8 @@ class FileStorage:
             if not data:
                 return
             for key, value in data.items():
-                if value['__class__'] in objects.keys():
-                    FileStorage.__objects[key] = objects[value['__class__']](**data[key])
+                class_name = value.get('__class__')
+                obj = eval(class_name + '(**value)')
+                FileStorage.__objects[key] = obj
         except Exception:
             pass
