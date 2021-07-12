@@ -62,7 +62,7 @@
     background-image: url('../images/icon_group.png');
     background-repeat: no-repeat;
 }
-.max_guest h1{
+.max_guest p{
     font-size: 10px;
     margin-bottom: -40px;
     margin-right: 50px;
@@ -76,7 +76,7 @@
     background-image: url('../images/icon_bed.png');
     background-repeat: no-repeat;
 }
-.number_rooms h1{
+.number_rooms p{
     font-size: 10px;
     margin-bottom: -40px;
     margin-right: 50px;
@@ -86,7 +86,7 @@
     background-image: url('../images/icon_bath.png');
     background-repeat: no-repeat;
 }
-.number_bathrooms h1{
+.number_bathrooms p{
     font-size: 10px;
     margin-bottom: -40px;
     margin-right: 50px;
